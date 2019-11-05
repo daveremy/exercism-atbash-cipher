@@ -11,11 +11,7 @@ pub fn encode(plain: &str) -> String {
     for c in plain.chars() {
         match ALPHABET.iter().position(|&a| a == c.to_ascii_lowercase()) {
             Some(pos) => {
-                append_char(
-                    &mut encoded,
-                    ALPHABET[25 - pos].to_ascii_lowercase(),
-                    &mut chunk_char_count,
-                );
+                append_char(&mut encoded, ALPHABET[25 - pos], &mut chunk_char_count);
             }
             None => {
                 if c.is_ascii() && !c.is_ascii_whitespace() && !c.is_ascii_punctuation() {
